@@ -51,9 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  numberContainer: {
-    marginTop: Dimensions.get("window").height > 600 ? 24 : 16,
+    paddingVertical: 16
   },
   title: {
     fontSize: Dimensions.get("window").width < 350 ? 21 : 24,
