@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Alert, StyleSheet, View, FlatList } from "react-native";
+import { Alert, StyleSheet, View, FlatList, Dimensions } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import Card from "../components/Card";
@@ -80,6 +80,12 @@ const GameScreen = (props) => {
     setPastGuesses((currentPastGuesses) => [nextGuess, ...currentPastGuesses]);
   };
 
+  let listContainerStyle = styles.listContainer;
+
+  if (Dimensions.get("window").width < 350) {
+    listContainerStyle = styles.listContainerBig;
+  }
+
   return (
     <View style={styles.screen}>
       <TitleText style={styles.title}>Computer guessed: </TitleText>
@@ -94,7 +100,7 @@ const GameScreen = (props) => {
         </MainButton>
       </Card>
 
-      <View style={styles.listContainer}>
+      <View style={listContainerStyle}>
         <FlatList
           data={pastGuesses}
           renderItem={renderListItem.bind(this, pastGuesses.length)}
@@ -116,19 +122,19 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   buttonContainer: {
-    width: 300,
-    maxWidth: "75%",
+    width: Dimensions.get("window").width > 350 ? "75%" : "90%",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: 16,
+    marginVertical: Dimensions.get("window").height > 600 ? 16 : 8,
   },
   listContainer: {
     flex: 1,
-    width: 300,
-    maxWidth: "75%",
+    width: "75%",
+    justifyContent: "flex-end",
   },
-  list: {
-    flexGrow: 1,
+  listContainerBig: {
+    flex: 1,
+    width: "90%",
     justifyContent: "flex-end",
   },
   listItem: {
