@@ -1,18 +1,19 @@
 import React from "react";
 
 import { Text, StyleSheet } from "react-native";
+import Colors from "../constants/colors";
 
 const HeaderText = (props) => {
   return (
-    <Text style={{ ...styles.header, ...props.style }}>{props.children}</Text>
+    <Text style={{ ...styles.headerText, ...props.style }}>{props.children}</Text>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
+  headerText: {
     fontFamily: "major-mono-display",
     fontSize: 24,
-    color: "white",
+    color: Platform.OS === "ios" ? Colors.primary : "white",
   },
 });
 

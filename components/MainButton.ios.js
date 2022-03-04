@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import Colors from "../constants/colors";
 
-// custom button component
 const MainButton = (props) => {
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={props.onPress}>

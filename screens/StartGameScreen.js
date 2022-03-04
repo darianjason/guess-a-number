@@ -97,7 +97,7 @@ const StartGameScreen = (props) => {
 
             <Card style={styles.inputContainer}>
               <BodyText>Select a Number</BodyText>
-              
+
               <Input
                 style={styles.input}
                 blurOnSubmit
