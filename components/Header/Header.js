@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Platform } from 'react-native';
 
-import HeaderText from '../HeaderText/HeaderText';
+import HeaderText from '../ui/HeaderText/HeaderText';
 import styles from './Header.styles';
 
 const Header = props => {
