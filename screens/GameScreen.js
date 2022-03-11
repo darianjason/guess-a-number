@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Alert, StyleSheet, View, FlatList, Dimensions } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import React, { useState, useRef, useEffect } from 'react';
+import { Alert, StyleSheet, View, FlatList, Dimensions } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-import Card from "../components/Card";
-import MainButton from "../components/MainButton";
-import NumberContainer from "../components/NumberContainer";
-import TitleText from "../components/TitleText";
-import BodyText from "../components/BodyText";
-import Colors from "../constants/colors";
+import Card from '../components/Card';
+import MainButton from '../components/MainButton';
+import NumberContainer from '../components/NumberContainer';
+import TitleText from '../components/TitleText';
+import BodyText from '../components/BodyText';
+import Colors from '../constants/colors';
 
 const generateRandomNumber = (min, max, exclusion) => {
   // exclude the solution (so app never guesses it on the 1st try)
@@ -31,29 +31,29 @@ const renderListItem = (listLength, itemData) => (
   </View>
 );
 
-const GameScreen = (props) => {
+const GameScreen = props => {
   const { userChoice, onGameOver } = props;
 
   const initialGuess = generateRandomNumber(1, 100, userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState([]); // state to log guesses made
   const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
-    Dimensions.get("window").width
+    Dimensions.get('window').width
   );
   const [availableDeviceHeight, setAvailableDeviceHeight] = useState(
-    Dimensions.get("window").height
+    Dimensions.get('window').height
   );
 
   useEffect(() => {
     const updateLayout = () => {
-      setAvailableDeviceWidth(Dimensions.get("window").width);
-      setAvailableDeviceHeight(Dimensions.get("window").height);
+      setAvailableDeviceWidth(Dimensions.get('window').width);
+      setAvailableDeviceHeight(Dimensions.get('window').height);
     };
 
-    Dimensions.addEventListener("change", updateLayout);
+    Dimensions.addEventListener('change', updateLayout);
 
     return () => {
-      Dimensions.removeEventListener("change", updateLayout);
+      Dimensions.removeEventListener('change', updateLayout);
     };
   });
 
@@ -69,23 +69,23 @@ const GameScreen = (props) => {
     }
   }, [currentGuess, userChoice, onGameOver]);
 
-  const nextGuessHandler = (direction) => {
+  const nextGuessHandler = direction => {
     if (
-      (direction === "lower" && currentGuess < userChoice) ||
-      (direction === "higher" && currentGuess > userChoice)
+      (direction === 'lower' && currentGuess < userChoice) ||
+      (direction === 'higher' && currentGuess > userChoice)
     ) {
-      Alert.alert("Wrong hint!", "Please do not lie to the computer.", [
-        { text: "Sorry", style: "cancel" },
+      Alert.alert('Wrong hint!', 'Please do not lie to the computer.', [
+        { text: 'Sorry', style: 'cancel' },
       ]);
 
       return;
     }
 
-    if (direction === "lower") {
+    if (direction === 'lower') {
       currentMax.current = currentGuess;
     }
 
-    if (direction === "higher") {
+    if (direction === 'higher') {
       currentMin.current = currentGuess + 1;
     }
 
@@ -96,7 +96,7 @@ const GameScreen = (props) => {
     );
 
     setCurrentGuess(nextGuess);
-    setPastGuesses((currentPastGuesses) => [nextGuess, ...currentPastGuesses]);
+    setPastGuesses(currentPastGuesses => [nextGuess, ...currentPastGuesses]);
   };
 
   let listContainerStyle = styles.listContainer;
@@ -111,14 +111,14 @@ const GameScreen = (props) => {
         <TitleText style={styles.title}>Computer guessed: </TitleText>
 
         <View style={styles.controls}>
-          <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
-            <Feather name="minus" size={24} color="white" />
+          <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
+            <Feather name='minus' size={24} color='white' />
           </MainButton>
 
           <NumberContainer>{currentGuess}</NumberContainer>
 
-          <MainButton onPress={nextGuessHandler.bind(this, "higher")}>
-            <Feather name="plus" size={24} color="white" />
+          <MainButton onPress={nextGuessHandler.bind(this, 'higher')}>
+            <Feather name='plus' size={24} color='white' />
           </MainButton>
         </View>
 
@@ -126,7 +126,7 @@ const GameScreen = (props) => {
           <FlatList
             data={pastGuesses}
             renderItem={renderListItem.bind(this, pastGuesses.length)}
-            keyExtractor={(item) => item}
+            keyExtractor={item => item}
             contentContainerStyle={styles.list}
           />
         </View>
@@ -141,12 +141,12 @@ const GameScreen = (props) => {
       <NumberContainer>{currentGuess}</NumberContainer>
 
       <Card style={styles.buttonContainer}>
-        <MainButton onPress={nextGuessHandler.bind(this, "lower")}>
-          <Feather name="minus" size={24} color="white" />
+        <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
+          <Feather name='minus' size={24} color='white' />
         </MainButton>
 
-        <MainButton onPress={nextGuessHandler.bind(this, "higher")}>
-          <Feather name="plus" size={24} color="white" />
+        <MainButton onPress={nextGuessHandler.bind(this, 'higher')}>
+          <Feather name='plus' size={24} color='white' />
         </MainButton>
       </Card>
 
@@ -154,7 +154,7 @@ const GameScreen = (props) => {
         <FlatList
           data={pastGuesses}
           renderItem={renderListItem.bind(this, pastGuesses.length)}
-          keyExtractor={(item) => item}
+          keyExtractor={item => item}
           contentContainerStyle={styles.list}
         />
       </View>
@@ -166,54 +166,54 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 8,
-    alignItems: "center",
+    alignItems: 'center',
   },
   title: {
     marginBottom: 8,
   },
   controls: {
-    width: "75%",
+    width: '75%',
     marginVertical: 8,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
   buttonContainer: {
-    width: Dimensions.get("window").width > 350 ? "75%" : "90%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginVertical: Dimensions.get("window").height > 600 ? 16 : 8,
+    width: Dimensions.get('window').width > 350 ? '75%' : '90%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: Dimensions.get('window').height > 600 ? 16 : 8,
   },
   listContainer: {
     flex: 1,
-    width: "75%",
-    justifyContent: "flex-end",
+    width: '75%',
+    justifyContent: 'flex-end',
   },
   listContainerBig: {
     flex: 1,
-    width: "90%",
-    justifyContent: "flex-end",
+    width: '90%',
+    justifyContent: 'flex-end',
   },
   listItem: {
-    width: "100%",
-    flexDirection: "row",
+    width: '100%',
+    flexDirection: 'row',
     marginVertical: 8,
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 8,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
   listItemText: {
     fontSize: 18,
   },
   roundNumber: {
-    fontFamily: "atkinson-hyperlegible",
+    fontFamily: 'atkinson-hyperlegible',
     color: Colors.accent,
   },
   guess: {
-    fontFamily: "atkinson-hyperlegible-bold",
+    fontFamily: 'atkinson-hyperlegible-bold',
     color: Colors.primary,
   },
 });

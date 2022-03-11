@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet } from 'react-native';
 
-const TitleText = (props) => {
+const TitleText = props => {
   return (
     <Text style={{ ...styles.title, ...props.style }}>{props.children}</Text>
   );
@@ -10,7 +10,7 @@ const TitleText = (props) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: "atkinson-hyperlegible-bold",
+    fontFamily: 'atkinson-hyperlegible-bold',
     fontSize: 21,
   },
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-} from "react-native";
+} from 'react-native';
 
-import Colors from "../constants/colors";
+import Colors from '../constants/colors';
 
 // custom button component
-const MainButton = (props) => {
+const MainButton = props => {
   let ButtonComponent = TouchableOpacity;
 
   if (Platform.Version >= 21) {
@@ -33,7 +33,7 @@ const MainButton = (props) => {
 const styles = StyleSheet.create({
   buttonContainer: {
     borderRadius: 24,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   button: {
     backgroundColor: Colors.primary,
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   buttonText: {
-    color: "white",
-    fontFamily: "atkinson-hyperlegible",
+    color: 'white',
+    fontFamily: 'atkinson-hyperlegible',
     fontSize: 18,
   },
 });

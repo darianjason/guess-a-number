@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,45 +9,46 @@ import {
   Dimensions,
   ScrollView,
   KeyboardAvoidingView,
-} from "react-native";
+} from 'react-native';
 
-import Card from "../components/Card";
-import Input from "../components/Input";
-import NumberContainer from "../components/NumberContainer";
-import Colors from "../constants/colors";
-import BodyText from "../components/BodyText";
-import TitleText from "../components/TitleText";
-import MainButton from "../components/MainButton";
+import Card from '../components/Card';
+import Input from '../components/Input';
+import NumberContainer from '../components/NumberContainer';
+import Colors from '../constants/colors';
+import BodyText from '../components/BodyText';
+import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
 
-const StartGameScreen = (props) => {
-  const [inputValue, setInputValue] = useState("");
+const StartGameScreen = props => {
+  const [inputValue, setInputValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
   const [buttonWidth, setButtonWidth] = useState(
-    Dimensions.get("window").width / 4
+    Dimensions.get('window').width / 4
   );
 
   // runs on every re-render
   useEffect(() => {
     const updateLayout = () => {
-      setButtonWidth(Dimensions.get("window").width / 4);
+      setButtonWidth(Dimensions.get('window').width / 4);
     };
 
-    Dimensions.addEventListener("change", updateLayout); // update layout whenever the screen is resized (& re-rendered)
+    Dimensions.addEventListener('change', updateLayout); // update layout whenever the screen is resized (& re-rendered)
 
-    return () => { // cleanup function: runs right before useEffect runs
-      Dimensions.removeEventListener("change", updateLayout);
+    return () => {
+      // cleanup function: runs right before useEffect runs
+      Dimensions.removeEventListener('change', updateLayout);
     };
   });
 
   const { onStartGame } = props;
 
-  const numberInputHandler = (input) => {
-    setInputValue(input.replace(/[^0-9]/g, "")); // regex to delete non-number characters
+  const numberInputHandler = input => {
+    setInputValue(input.replace(/[^0-9]/g, '')); // regex to delete non-number characters
   };
 
   const resetInputHandler = () => {
-    setInputValue("");
+    setInputValue('');
     setConfirmed(false);
   };
 
@@ -56,15 +57,15 @@ const StartGameScreen = (props) => {
 
     if (isNaN(number) || number <= 0 || number > 99) {
       // Alert is a React Native object which calls native alert API
-      Alert.alert("Invalid number!", "Number must be between 1 and 99.", [
-        { text: "Ok", style: "destructive", onPress: resetInputHandler },
+      Alert.alert('Invalid number!', 'Number must be between 1 and 99.', [
+        { text: 'Ok', style: 'destructive', onPress: resetInputHandler },
       ]);
       return;
     }
 
     setConfirmed(true);
     setSelectedNumber(number);
-    setInputValue("");
+    setInputValue('');
     Keyboard.dismiss();
   };
 
@@ -86,7 +87,7 @@ const StartGameScreen = (props) => {
 
   return (
     <ScrollView>
-      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={32}>
+      <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={32}>
         <TouchableWithoutFeedback
           onPress={() => {
             Keyboard.dismiss(); // dismiss keyboard when touching somewhere else
@@ -101,9 +102,9 @@ const StartGameScreen = (props) => {
               <Input
                 style={styles.input}
                 blurOnSubmit
-                autoCapitalize="none"
+                autoCapitalize='none'
                 autoCorrect={false}
-                keyboardType="number-pad" // Android still shows decimal point, still have to validate
+                keyboardType='number-pad' // Android still shows decimal point, still have to validate
                 maxLength={2}
                 onChangeText={numberInputHandler}
                 value={inputValue}
@@ -112,7 +113,7 @@ const StartGameScreen = (props) => {
               <View style={styles.buttonContainer}>
                 <View style={{ width: buttonWidth }}>
                   <Button
-                    title="Reset"
+                    title='Reset'
                     onPress={resetInputHandler}
                     color={Colors.accent}
                   />
@@ -120,7 +121,7 @@ const StartGameScreen = (props) => {
 
                 <View style={{ width: buttonWidth }}>
                   <Button
-                    title="Confirm"
+                    title='Confirm'
                     onPress={confirmInputHandler}
                     color={Colors.primary}
                   />
@@ -140,35 +141,35 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 8,
-    alignItems: "center",
+    alignItems: 'center',
   },
   title: {
     marginVertical: 8,
   },
   inputContainer: {
-    width: "75%",
-    maxWidth: "90%",
+    width: '75%',
+    maxWidth: '90%',
     minWidth: 300,
     marginVertical: 16,
-    alignItems: "center",
+    alignItems: 'center',
   },
   input: {
     height: 48,
-    width: "25%",
-    textAlign: "center",
-    fontFamily: "atkinson-hyperlegible-bold",
+    width: '25%',
+    textAlign: 'center',
+    fontFamily: 'atkinson-hyperlegible-bold',
     fontSize: 24,
   },
   buttonContainer: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
     marginTop: 8,
   },
   summaryContainer: {
     marginVertical: 16,
-    alignItems: "center",
+    alignItems: 'center',
   },
   selectedNumber: {
     marginVertical: 16,

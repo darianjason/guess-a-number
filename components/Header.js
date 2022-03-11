@@ -1,9 +1,9 @@
-import React from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import Colors from "../constants/colors";
-import HeaderText from "./HeaderText";
+import React from 'react';
+import { View, StyleSheet, Platform } from 'react-native';
+import Colors from '../constants/colors';
+import HeaderText from './HeaderText';
 
-const Header = (props) => {
+const Header = props => {
   return (
     <View
       style={{
@@ -21,19 +21,19 @@ const Header = (props) => {
 
 const styles = StyleSheet.create({
   headerBase: {
-    width: "100%",
+    width: '100%',
     paddingTop: 36,
     paddingBottom: 18,
-    alignItems: "center",
+    alignItems: 'center',
   },
   headerIOS: {
-    backgroundColor: "white",
-    borderBottomColor: "#ccc",
+    backgroundColor: 'white',
+    borderBottomColor: '#ccc',
     borderBottomWidth: 1,
   },
   headerAndroid: {
     backgroundColor: Colors.primary,
-    borderBottomColor: "transparent",
+    borderBottomColor: 'transparent',
     borderBottomWidth: 0,
   },
 });

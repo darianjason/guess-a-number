@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
+import React from 'react';
+import { Text, StyleSheet } from 'react-native';
 
-const BodyText = (props) => {
+const BodyText = props => {
   return (
     <Text style={{ ...styles.body, ...props.style }}>{props.children}</Text>
   );
@@ -9,7 +9,7 @@ const BodyText = (props) => {
 
 const styles = StyleSheet.create({
   body: {
-    fontFamily: "atkinson-hyperlegible",
+    fontFamily: 'atkinson-hyperlegible',
   },
 });
 

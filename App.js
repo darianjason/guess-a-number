@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import { StyleSheet, View, SafeAreaView } from "react-native";
-import * as Font from "expo-font";
-import AppLoading from "expo-app-loading";
+import React, { useState } from 'react';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
-import Header from "./components/Header";
-import StartGameScreen from "./screens/StartGameScreen";
-import GameScreen from "./screens/GameScreen";
-import GameOverScreen from "./screens/GameOverScreen";
+import Header from './components/Header';
+import StartGameScreen from './screens/StartGameScreen';
+import GameScreen from './screens/GameScreen';
+import GameOverScreen from './screens/GameOverScreen';
 
 const fetchFonts = () => {
   // function from expo-font to load fonts efficiently
   Font.loadAsync({
-    "atkinson-hyperlegible": require("./assets/fonts/AtkinsonHyperlegible-Regular.ttf"),
-    "atkinson-hyperlegible-bold": require("./assets/fonts/AtkinsonHyperlegible-Bold.ttf"),
-    "major-mono-display": require("./assets/fonts/MajorMonoDisplay-Regular.ttf"),
+    'atkinson-hyperlegible': require('./assets/fonts/AtkinsonHyperlegible-Regular.ttf'),
+    'atkinson-hyperlegible-bold': require('./assets/fonts/AtkinsonHyperlegible-Bold.ttf'),
+    'major-mono-display': require('./assets/fonts/MajorMonoDisplay-Regular.ttf'),
   });
 };
 
@@ -29,7 +29,7 @@ export default function App() {
       <AppLoading
         startAsync={fetchFonts}
         onFinish={() => setDataLoaded(true)}
-        onError={(error) => console.log(error)}
+        onError={error => console.log(error)}
       />
     );
   }
@@ -39,12 +39,12 @@ export default function App() {
     setUserNumber(null);
   };
 
-  const startGameHandler = (selectedNumber) => {
+  const startGameHandler = selectedNumber => {
     setUserNumber(selectedNumber);
     setRounds(0);
   };
 
-  const gameOverHandler = (rounds) => {
+  const gameOverHandler = rounds => {
     setRounds(rounds);
   };
 
@@ -67,7 +67,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <Header title="Guess a Number" />
+      <Header title='Guess a Number' />
       {content}
     </SafeAreaView>
   );
