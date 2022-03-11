@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, Image, Text, ScrollView } from 'react-native';
 
-import BodyText from '../../components/ui/BodyText/BodyText';
-import MainButton from '../../components/ui/MainButton/MainButton';
-import NumberContainer from '../../components/NumberContainer/NumberContainer';
-import TitleText from '../../components/ui/TitleText/TitleText';
+import { BodyText, MainButton, TitleText } from '../../components/ui';
+import { NumberContainer } from '../../components';
 import styles from './GameOverScreen.styles';
 
 const GameOverScreen = props => {

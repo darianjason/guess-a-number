@@ -10,12 +10,14 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import Card from '../../components/ui/Card/Card';
-import Input from '../../components/ui/Input/Input';
-import NumberContainer from '../../components/NumberContainer/NumberContainer';
-import BodyText from '../../components/ui/BodyText/BodyText';
-import TitleText from '../../components/ui/TitleText/TitleText';
-import MainButton from '../../components/ui/MainButton/MainButton';
+import {
+  Card,
+  Input,
+  BodyText,
+  TitleText,
+  MainButton,
+} from '../../components/ui';
+import { NumberContainer } from '../../components';
 import styles from './StartGameScreen.styles';
 import Colors from '../../constants/Colors';
 

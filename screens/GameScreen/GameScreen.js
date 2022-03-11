@@ -2,11 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Alert, View, FlatList, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import Card from '../../components/ui/Card/Card';
-import MainButton from '../../components/ui/MainButton/MainButton';
-import NumberContainer from '../../components/NumberContainer/NumberContainer';
-import TitleText from '../../components/ui/TitleText/TitleText';
-import BodyText from '../../components/ui/BodyText/BodyText';
+import { Card, MainButton, TitleText, BodyText } from '../../components/ui';
+import { NumberContainer } from '../../components';
 import styles from './GameScreen.styles';
 
 const generateRandomNumber = (min, max, exclusion) => {

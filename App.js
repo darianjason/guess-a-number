@@ -3,10 +3,8 @@ import { SafeAreaView } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-import Header from './components/ui/Header/Header';
-import StartGameScreen from './screens/StartGameScreen/StartGameScreen';
-import GameScreen from './screens/GameScreen/GameScreen';
-import GameOverScreen from './screens/GameOverScreen/GameOverScreen';
+import { Header } from './components';
+import { StartGameScreen, GameScreen, GameOverScreen } from './screens';
 import styles from './App.styles';
 
 const fetchFonts = () => {
