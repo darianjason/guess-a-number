@@ -1,16 +1,12 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
+
+import styles from './BodyText.styles';
 
 const BodyText = props => {
   return (
     <Text style={{ ...styles.body, ...props.style }}>{props.children}</Text>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    fontFamily: 'atkinson-hyperlegible',
-  },
-});
 
 export default BodyText;

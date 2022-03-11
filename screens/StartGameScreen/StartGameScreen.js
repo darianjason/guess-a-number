@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   View,
-  StyleSheet,
   Button,
   TouchableWithoutFeedback,
   Keyboard,
@@ -11,13 +10,14 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import Card from '../components/Card';
-import Input from '../components/Input';
-import NumberContainer from '../components/NumberContainer';
-import Colors from '../constants/colors';
-import BodyText from '../components/BodyText';
-import TitleText from '../components/TitleText';
-import MainButton from '../components/MainButton';
+import Card from '../../components/ui/Card/Card';
+import Input from '../../components/ui/Input/Input';
+import NumberContainer from '../../components/NumberContainer/NumberContainer';
+import BodyText from '../../components/ui/BodyText/BodyText';
+import TitleText from '../../components/ui/TitleText/TitleText';
+import MainButton from '../../components/ui/MainButton/MainButton';
+import styles from './StartGameScreen.styles';
+import Colors from '../../constants/Colors';
 
 const StartGameScreen = props => {
   const [inputValue, setInputValue] = useState('');
@@ -136,44 +136,5 @@ const StartGameScreen = props => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    padding: 8,
-    alignItems: 'center',
-  },
-  title: {
-    marginVertical: 8,
-  },
-  inputContainer: {
-    width: '75%',
-    maxWidth: '90%',
-    minWidth: 300,
-    marginVertical: 16,
-    alignItems: 'center',
-  },
-  input: {
-    height: 48,
-    width: '25%',
-    textAlign: 'center',
-    fontFamily: 'atkinson-hyperlegible-bold',
-    fontSize: 24,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    marginTop: 8,
-  },
-  summaryContainer: {
-    marginVertical: 16,
-    alignItems: 'center',
-  },
-  selectedNumber: {
-    marginVertical: 16,
-  },
-});
 
 export default StartGameScreen;

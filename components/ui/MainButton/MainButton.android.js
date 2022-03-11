@@ -2,13 +2,12 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
 } from 'react-native';
 
-import Colors from '../constants/colors';
+import styles from './MainButton.android.styles';
 
 // custom button component
 const MainButton = props => {
@@ -29,23 +28,5 @@ const MainButton = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    borderRadius: 24,
-    overflow: 'hidden',
-  },
-  button: {
-    backgroundColor: Colors.primary,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 24,
-  },
-  buttonText: {
-    color: 'white',
-    fontFamily: 'atkinson-hyperlegible',
-    fontSize: 18,
-  },
-});
 
 export default MainButton;

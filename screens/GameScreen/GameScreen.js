@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Alert, StyleSheet, View, FlatList, Dimensions } from 'react-native';
+import { Alert, View, FlatList, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import Card from '../components/Card';
-import MainButton from '../components/MainButton';
-import NumberContainer from '../components/NumberContainer';
-import TitleText from '../components/TitleText';
-import BodyText from '../components/BodyText';
-import Colors from '../constants/colors';
+import Card from '../../components/ui/Card/Card';
+import MainButton from '../../components/ui/MainButton/MainButton';
+import NumberContainer from '../../components/NumberContainer/NumberContainer';
+import TitleText from '../../components/ui/TitleText/TitleText';
+import BodyText from '../../components/ui/BodyText/BodyText';
+import styles from './GameScreen.styles';
 
 const generateRandomNumber = (min, max, exclusion) => {
   // exclude the solution (so app never guesses it on the 1st try)
@@ -161,61 +161,5 @@ const GameScreen = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    padding: 8,
-    alignItems: 'center',
-  },
-  title: {
-    marginBottom: 8,
-  },
-  controls: {
-    width: '75%',
-    marginVertical: 8,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-  },
-  buttonContainer: {
-    width: Dimensions.get('window').width > 350 ? '75%' : '90%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: Dimensions.get('window').height > 600 ? 16 : 8,
-  },
-  listContainer: {
-    flex: 1,
-    width: '75%',
-    justifyContent: 'flex-end',
-  },
-  listContainerBig: {
-    flex: 1,
-    width: '90%',
-    justifyContent: 'flex-end',
-  },
-  listItem: {
-    width: '100%',
-    flexDirection: 'row',
-    marginVertical: 8,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 8,
-    justifyContent: 'space-between',
-  },
-  listItemText: {
-    fontSize: 18,
-  },
-  roundNumber: {
-    fontFamily: 'atkinson-hyperlegible',
-    color: Colors.accent,
-  },
-  guess: {
-    fontFamily: 'atkinson-hyperlegible-bold',
-    color: Colors.primary,
-  },
-});
 
 export default GameScreen;

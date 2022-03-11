@@ -1,11 +1,4 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-
-const Card = props => {
-  return (
-    <View style={{ ...styles.card, ...props.style }}>{props.children}</View>
-  );
-};
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   card: {
@@ -22,4 +15,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default styles;

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-import Header from './components/Header';
-import StartGameScreen from './screens/StartGameScreen';
-import GameScreen from './screens/GameScreen';
-import GameOverScreen from './screens/GameOverScreen';
+import Header from './components/ui/Header/Header';
+import StartGameScreen from './screens/StartGameScreen/StartGameScreen';
+import GameScreen from './screens/GameScreen/GameScreen';
+import GameOverScreen from './screens/GameOverScreen/GameOverScreen';
+import styles from './App.styles';
 
 const fetchFonts = () => {
   // function from expo-font to load fonts efficiently
@@ -72,9 +73,3 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-});
