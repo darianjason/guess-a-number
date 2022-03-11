@@ -8,7 +8,6 @@ import { StartGameScreen, GameScreen, GameOverScreen } from './screens';
 import styles from './App.styles';
 
 const fetchFonts = () => {
-  // function from expo-font to load fonts efficiently
   Font.loadAsync({
     'atkinson-hyperlegible': require('./assets/fonts/AtkinsonHyperlegible-Regular.ttf'),
     'atkinson-hyperlegible-bold': require('./assets/fonts/AtkinsonHyperlegible-Bold.ttf'),
@@ -23,8 +22,6 @@ export default function App() {
 
   if (!dataLoaded) {
     return (
-      // pass async function (which returns promise) to AppLoading, usually for assets
-      // AppLoading will wait for startAsync promise to resolve before calling onFinish
       <AppLoading
         startAsync={fetchFonts}
         onFinish={() => setDataLoaded(true)}
@@ -50,7 +47,6 @@ export default function App() {
   let content = <StartGameScreen onStartGame={startGameHandler} />;
 
   if (userNumber && rounds <= 0) {
-    // if number was already selected in StartGameScreen
     content = (
       <GameScreen userChoice={userNumber} onGameOver={gameOverHandler} />
     );

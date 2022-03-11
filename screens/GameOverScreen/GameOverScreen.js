@@ -22,7 +22,7 @@ const GameOverScreen = props => {
             }}
             style={styles.image}
             resizeMode='cover'
-            fadeDuration={500} // fade animation while image loads from uri
+            fadeDuration={500}
           />
         </View>
         <View style={styles.resultContainer}>

@@ -9,12 +9,10 @@ import {
 
 import styles from './MainButton.android.styles';
 
-// custom button component
 const MainButton = props => {
   let ButtonComponent = TouchableOpacity;
 
   if (Platform.Version >= 21) {
-    // only Android version 21+ has ripple effect
     ButtonComponent = TouchableNativeFeedback;
   }
 

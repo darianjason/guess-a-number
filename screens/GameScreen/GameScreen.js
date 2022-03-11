@@ -7,7 +7,6 @@ import { NumberContainer } from '../../components';
 import styles from './GameScreen.styles';
 
 const generateRandomNumber = (min, max, exclusion) => {
-  // exclude the solution (so app never guesses it on the 1st try)
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
 
   if (randomNumber === exclusion) {
@@ -33,7 +32,7 @@ const GameScreen = props => {
 
   const initialGuess = generateRandomNumber(1, 100, userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
-  const [pastGuesses, setPastGuesses] = useState([]); // state to log guesses made
+  const [pastGuesses, setPastGuesses] = useState([]);
   const [availableDeviceWidth, setAvailableDeviceWidth] = useState(
     Dimensions.get('window').width
   );
@@ -54,14 +53,11 @@ const GameScreen = props => {
     };
   });
 
-  // refs don't require re-rendering of components
   const currentMin = useRef(1);
   const currentMax = useRef(100);
 
-  // useEffect is a React hook that runs after every render cycle for this component
   useEffect(() => {
     if (currentGuess === userChoice) {
-      // check for game over
       onGameOver(pastGuesses.length);
     }
   }, [currentGuess, userChoice, onGameOver]);

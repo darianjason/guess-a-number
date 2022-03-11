@@ -29,16 +29,14 @@ const StartGameScreen = props => {
     Dimensions.get('window').width / 4
   );
 
-  // runs on every re-render
   useEffect(() => {
     const updateLayout = () => {
       setButtonWidth(Dimensions.get('window').width / 4);
     };
 
-    Dimensions.addEventListener('change', updateLayout); // update layout whenever the screen is resized (& re-rendered)
+    Dimensions.addEventListener('change', updateLayout);
 
     return () => {
-      // cleanup function: runs right before useEffect runs
       Dimensions.removeEventListener('change', updateLayout);
     };
   });
@@ -46,7 +44,7 @@ const StartGameScreen = props => {
   const { onStartGame } = props;
 
   const numberInputHandler = input => {
-    setInputValue(input.replace(/[^0-9]/g, '')); // regex to delete non-number characters
+    setInputValue(input.replace(/[^0-9]/g, ''));
   };
 
   const resetInputHandler = () => {
@@ -58,7 +56,6 @@ const StartGameScreen = props => {
     const number = parseInt(inputValue);
 
     if (isNaN(number) || number <= 0 || number > 99) {
-      // Alert is a React Native object which calls native alert API
       Alert.alert('Invalid number!', 'Number must be between 1 and 99.', [
         { text: 'Ok', style: 'destructive', onPress: resetInputHandler },
       ]);
@@ -92,7 +89,7 @@ const StartGameScreen = props => {
       <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={32}>
         <TouchableWithoutFeedback
           onPress={() => {
-            Keyboard.dismiss(); // dismiss keyboard when touching somewhere else
+            Keyboard.dismiss();
           }}
         >
           <View style={styles.screen}>
@@ -106,7 +103,7 @@ const StartGameScreen = props => {
                 blurOnSubmit
                 autoCapitalize='none'
                 autoCorrect={false}
-                keyboardType='number-pad' // Android still shows decimal point, still have to validate
+                keyboardType='number-pad'
                 maxLength={2}
                 onChangeText={numberInputHandler}
                 value={inputValue}
