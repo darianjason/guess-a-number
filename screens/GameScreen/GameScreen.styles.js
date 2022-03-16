@@ -11,11 +11,15 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 8,
   },
-  controls: {
+  controlsLandscape: {
     width: '75%',
     marginVertical: 8,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  controlsPortrait: {
+    width: '100%',
     alignItems: 'center',
   },
   buttonContainer: {

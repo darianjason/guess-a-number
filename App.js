@@ -15,50 +15,67 @@ const fetchFonts = () => {
   });
 };
 
-export default function App() {
-  const [userNumber, setUserNumber] = useState();
-  const [rounds, setRounds] = useState(0);
-  const [dataLoaded, setDataLoaded] = useState(false);
+const loadData = setDataLoaded => {
+  return (
+    <AppLoading
+      startAsync={fetchFonts}
+      onFinish={() => setDataLoaded(true)}
+      onError={error => console.error(error)}
+    />
+  );
+};
 
-  if (!dataLoaded) {
-    return (
-      <AppLoading
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-        onError={error => console.log(error)}
-      />
-    );
-  }
+const configureNewGameHandler = (setRounds, setUserNumber) => {
+  setRounds(0);
+  setUserNumber(null);
+};
 
-  const configureNewGameHandler = () => {
-    setRounds(0);
-    setUserNumber(null);
-  };
+const startGameHandler = (setRounds, setUserNumber, selectedNumber) => {
+  setRounds(0);
+  setUserNumber(selectedNumber);
+};
 
-  const startGameHandler = selectedNumber => {
-    setUserNumber(selectedNumber);
-    setRounds(0);
-  };
+const gameOverHandler = (setRounds, rounds) => {
+  setRounds(rounds);
+};
 
-  const gameOverHandler = rounds => {
-    setRounds(rounds);
-  };
-
-  let content = <StartGameScreen onStartGame={startGameHandler} />;
+const setContent = (rounds, setRounds, userNumber, setUserNumber) => {
+  let content = (
+    <StartGameScreen
+      onStartGame={startGameHandler.bind(this, setRounds, setUserNumber)}
+    />
+  );
 
   if (userNumber && rounds <= 0) {
     content = (
-      <GameScreen userChoice={userNumber} onGameOver={gameOverHandler} />
+      <GameScreen
+        userChoice={userNumber}
+        onGameOver={gameOverHandler.bind(this, setRounds)}
+      />
     );
   } else if (rounds > 0) {
     content = (
       <GameOverScreen
         rounds={rounds}
         userNumber={userNumber}
-        onRestart={configureNewGameHandler}
+        onRestart={configureNewGameHandler.bind(this, setRounds, setUserNumber)}
       />
     );
   }
+
+  return content;
+};
+
+export default function App() {
+  const [userNumber, setUserNumber] = useState();
+  const [rounds, setRounds] = useState(0);
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  if (!dataLoaded) {
+    return loadData(setDataLoaded);
+  }
+
+  let content = setContent(rounds, setRounds, userNumber, setUserNumber);
 
   return (
     <SafeAreaView style={styles.screen}>
