@@ -184,11 +184,7 @@ const renderScreen = (
   return (
     <ScrollView>
       <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={32}>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            Keyboard.dismiss();
-          }}
-        >
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View style={styles.screen}>
             <TitleText style={styles.title}>Start a New Game!</TitleText>
 
